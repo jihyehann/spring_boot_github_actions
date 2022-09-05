@@ -44,6 +44,9 @@ jobs:
 
     - name: make application.properties
       run: |
+        if [ ! -d ./src/main/resources ]; then
+          mkdir ./src/main/resources
+        fi
         cd ./src/main/resources
         touch ./application.properties
         echo "${{ secrets.PROPERTIES_DEV }}" > ./application.properties
